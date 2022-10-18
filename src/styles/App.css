@@ -5,3 +5,27 @@ Styles here
 Reminder: u can create stylesheets for each component app
 
 */
+
+
+/*
+
+Reset styles
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 62.5%;
+    background-color: #000000ee;
+}
+
+body {
+    background-color: #000000;
+}
