@@ -6,6 +6,22 @@ Reminder: u can create stylesheets for each component app
 
 */
 
+/* 
+
+vars
+
+*/
+
+:root {
+    --nav-black: #23242A;
+    --soft-purple: #9FA8E0;
+    --nav-button: #FFFFFF;
+    --nav-button-active: #D197FA;
+    --light-blue: #CEE7EA;
+    --light-green: #CDE9D4;
+}
+
+
 
 /*
 
@@ -28,4 +44,8 @@ html {
 
 body {
     background-color: #000000;
+    font-family: "Libre Franklin";
+    min-height: 100vh;
+    color: white;
+    padding-bottom: 100px;
 }

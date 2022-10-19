@@ -14,7 +14,6 @@ const App = () => {
     const { HomeRoute, MapRoute, NewTripRoute, HistoryRoute, AccountRoute } = useContext(GlobalContext).routes;
     return (
         <div className="app">
-            <p>This is home</p>
             <Routes>
                 <Route path={ HomeRoute } element={<Home />} />
                 <Route path={ MapRoute } element={<MapView />} />

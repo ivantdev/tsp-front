@@ -1,24 +1,12 @@
 /* 
 
-vars
-
-*/
-
-:root {
-    --nav-black: #23242A;
-    --nav-bg-purple: #9FA8E0;
-    --nav-button: #FFFFFF;
-    --nav-button-active: #D197FA;
-}
-
-/* 
-
 Styles for NavBar
 
 */
 
 .nav-container {
     position: fixed;
+    z-index: 2;
     bottom: 1rem;
     width: 100%;
     height: 100px;
@@ -44,7 +32,7 @@ Styles for NavBar
 }
 
 .nav-item.plus a{
-    background-color: var(--nav-bg-purple);
+    background-color: var(--soft-purple);
     width: 70px;
     height: 70px;
     display: flex;
