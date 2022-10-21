@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const GlobalContext = React.createContext();
 
@@ -27,12 +28,36 @@ const GlobalContextProvider = ( {children}) => {
             alt: "Picture of banner. Trip draw on map"
         }
     ]
+    const defaultNavState = {
+        active: true,
+        home: false,
+        map: false,
+        new: false,
+        history: false,
+        account: false
+    };
+    const route = useLocation().pathname;
+    const [ navState, setNavState ] = useState();
+
+    const UpdateRoute = () => {
+        const newNavState = { ...defaultNavState };
+        if (route === "/") {
+            newNavState.home = true;
+            
+        } else {
+            newNavState[route.substring(1)] = true;
+        }
+        setNavState(newNavState);
+    };
 
     return(
         <GlobalContext.Provider value={
             {
                 routes,
-                banners
+                banners,
+                route,
+                navState,
+                UpdateRoute,
             }
         }>
             {children}

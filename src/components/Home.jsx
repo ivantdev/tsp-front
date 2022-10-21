@@ -1,5 +1,3 @@
-import { NavBar } from "./NavBar";
-
 import "../styles/Home.css";
 import { Banners } from "./Banners";
 
@@ -15,7 +13,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <NavBar></NavBar>
         </>
     )
 };

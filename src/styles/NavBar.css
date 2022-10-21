@@ -5,6 +5,7 @@ Styles for NavBar
 */
 
 .nav-container {
+    opacity: 0;
     position: fixed;
     z-index: 2;
     bottom: 1rem;
@@ -12,6 +13,10 @@ Styles for NavBar
     height: 100px;
     display: flex;
     justify-content: center;
+}
+
+.nav-container.active {
+    opacity: 1;
 }
 
 .navbar {
