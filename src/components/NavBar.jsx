@@ -6,32 +6,33 @@ import "../styles/NavBar.css"
 
 const NavBar = () => {
     const { HomeRoute, MapRoute, NewTripRoute, HistoryRoute, AccountRoute } = useContext(GlobalContext).routes;
+    const { navState } = useContext(GlobalContext);
     return (
-        <div className="nav-container">
+        <div className={navState?.active ? "nav-container active" : "nav-container"}>
             <nav className="navbar">
                 <ul>
                     <li className="nav-item">
-                        <Link className="active" to={ HomeRoute }>
+                        <Link className={navState?.home ? "active": ""} to={ HomeRoute }>
                             <i className="fa-light fa-home-blank"></i>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to={ MapRoute }>
-                            <i className="fa-light fa-map-location"></i>
+                        <Link className={navState?.map ? "active": ""} to={ MapRoute }>
+                            <i className="fa-light fa-map"></i>
                         </Link>
                     </li>
                     <li className="nav-item plus">
-                        <Link to={ NewTripRoute }>
+                        <Link className={navState?.new ? "active": ""} to={ NewTripRoute }>
                             <i className="fa-regular fa-plus"></i>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to={ HistoryRoute }>
+                        <Link className={navState?.history ? "active": ""} to={ HistoryRoute }>
                             <i className="fa-light fa-clock-rotate-left"></i>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to={ AccountRoute }>
+                        <Link className={navState?.account ? "active": ""} to={ AccountRoute }>
                             <i className="fa-light fa-user"></i>
                         </Link>
                     </li>
