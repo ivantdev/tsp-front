@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const GlobalContext = React.createContext();
 
 const GlobalContextProvider = ( {children}) => {
+    const [ message, setMessage ] = useState(null)
+    const [ navState, setNavState ] = useState();
+
+    const { local, saveItem } = useLocalStorage("TSP_PROJECT", {});
+    const route = useLocation().pathname;
+
+    const endpoint = process.env.REACT_APP_ENDPOINT;
+    const url_paths = {
+        login: "/login",
+        signup: "/signup"
+    }
     const routes = {
         HomeRoute: "/",
         MapRoute: "/map",
@@ -11,7 +23,6 @@ const GlobalContextProvider = ( {children}) => {
         HistoryRoute: "/history",
         AccountRoute: "/account"
     }
-
     const banners = [
         {
             id: 1,
@@ -36,8 +47,7 @@ const GlobalContextProvider = ( {children}) => {
         history: false,
         account: false
     };
-    const route = useLocation().pathname;
-    const [ navState, setNavState ] = useState();
+
 
     const UpdateRoute = () => {
         const newNavState = { ...defaultNavState };
@@ -58,6 +68,12 @@ const GlobalContextProvider = ( {children}) => {
                 route,
                 navState,
                 UpdateRoute,
+                endpoint,
+                url_paths,
+                message,
+                setMessage,
+                local,
+                saveItem,
             }
         }>
             {children}

@@ -1,8 +1,16 @@
-const Account = () => {
-    return (
-        <div className="account">
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
+import { Log } from "./Log";
 
-        </div>
+const Account = () => {
+    const { local } = useContext(GlobalContext);
+    if ( !local?.token ) {
+        return(
+            <Log />
+        )
+    }
+    return (
+        <></>
     )
 };
 
