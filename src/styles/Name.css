@@ -1,28 +1,34 @@
 .btn {
-    width: 19%;
-    height: 60px;
+    flex:auto;
+    height: 80px;
+    width: 80px;
     background-color: transparent;
+    color:white;
     border: none; 
-    color: white; 
     padding: 0; 
-    font-size: 16px; 
-    cursor: white; 
+    cursor: default;
 }
 
 input[type=text]{
     background-color: transparent;
-    width:fit-content;
-    block-size: fit-content;
     height: 80px;
     padding: 0 20px;
-    align-items:baseline;
     font-size: 2.8rem;
-    cursor: default;
-    user-select: none;
+    cursor: text;
     color: white;
     border:none
 }
 
-form{
-    display:flow-root;
+#cont{
+    height: 80px;
+    display:flex;
+    width: 100%;
+}
+
+#texth{
+    flex: 0 1 fit-content;
+    overflow:hidden
+}
+#boton{
+    flex: 0 1 auto
 }

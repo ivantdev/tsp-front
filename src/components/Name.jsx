@@ -17,9 +17,15 @@ export class Name extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}> <label>
+            <form onSubmit={this.handleSubmit}> 
+            <div id="cont">
+                <div id="texth"><label>
                 <input type="text" placeholder="Name of trip" value={this.state.value} onChange={this.handleChange} /> </label>
-                <button type="submit" class="btn"><i className="fa-light fa-pen"></i></button>
+                </div>
+                <div id="boton">
+                    <button type="submit" class="btn"><i className="fa-light fa-pen"></i></button>
+                </div>
+            </div>
             </form>
         );
     }
