@@ -1,5 +1,5 @@
-import React from "react";
 import '../styles/Name.css'
+import React from "react";
 
 export class Name extends React.Component {
     constructor(props) {

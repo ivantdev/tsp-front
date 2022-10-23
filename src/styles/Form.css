@@ -49,7 +49,8 @@
     font-family: "Libre Franklin";
     font-size: 2rem;
     font-weight: 500;
-    background-color: var(--light-green);
+    color: var(--nav-black);
+    background-color: var(--light-blue);
     border: none;
     border-radius: 30px;
 }

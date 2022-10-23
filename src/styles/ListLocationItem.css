@@ -1,0 +1,33 @@
+.details__locations {
+    padding: 10px 0;
+}
+
+.location__item {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+}
+
+.location__item .dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--light-green);
+}
+
+.location__item .text {
+    width: 100%;
+    padding: 3px 0 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    font-size: 1.8rem;
+}
+
+.location__description {
+    font-size: 1.6rem;
+    padding-left: 20px;
+    color: var(--gray);
+}

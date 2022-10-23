@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalContext";
 import { Log } from "./Log";
 
 const Account = () => {
-    const { local } = useContext(GlobalContext);
+    const { local, setBody } = useContext(GlobalContext);
     if ( !local?.token ) {
         return(
             <Log />

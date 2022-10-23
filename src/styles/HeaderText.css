@@ -1,12 +1,14 @@
 .header-title {
-    width: 100%;
-    height: 80px;
-    padding: 0 20px;
+    width: min-content;
+    height: auto;
+    margin: 0 20px 50px;
+    padding: 20px 0 10px;
     display: flex;
     align-items: center;
     font-size: 2.8rem;
     cursor: default;
     user-select: none;
+    border-bottom: 1px solid white;
 }
 
 .text-1 {
@@ -15,6 +17,7 @@
 
 .text-2 {
     color: var(--gray);
+    padding-right: 20px;
 }
 
 .header-title.reverse .text-1 {

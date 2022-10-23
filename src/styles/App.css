@@ -16,12 +16,15 @@ vars
     --white: #FFFFFF;
     --nav-black: #23242A;
     --soft-purple: #9FA8E0;
+    --soft-purple-alpha: #9fa8e050;
     --nav-button: #FFFFFF;
     --nav-button-active: #D197FA;
     --light-blue: #CEE7EA;
     --light-green: #CDE9D4;
     --light-red: #FF3333;
     --gray: #6F6F6F;
+
+    --100vh: 0px;
 }
 
 
@@ -48,7 +51,19 @@ html {
 body {
     background-color: #000000;
     font-family: "Libre Franklin";
-    min-height: 100vh;
+    min-height: var(--100vh);
     color: var(--white);
     padding-bottom: 100px;
 }
+
+body.nopadding {
+    padding: 0;
+}
+
+.app {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.gm-style-cc { display:none; }

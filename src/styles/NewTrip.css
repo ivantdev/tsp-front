@@ -1,10 +1,70 @@
-h1 {
-    color: white;
-    display:inline;
-    border-bottom: 3px solid white;
-    text-align: left;
-    font-size: 40px;
+.new-trip {
+    width: 100%;
+    padding: 0 20px;
 }
-.to{
-    color:gray;
+
+.trip__title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% 40px;
+    align-items: center;
+}
+
+.trip__title-input {
+    width: 100%;
+    height: 40px;
+    font-family: "Libre Franklin";
+    font-size: 2.8rem;
+    color: var(--light-blue);
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.trip__title label {
+    font-size: 2rem;
+    color: var(--soft-purple);
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.trip__start-point {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    margin: 20px 0;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.8rem;
+    font-weight: 200;
+}
+
+.checkbox {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--soft-purple-alpha);
+    border-radius: 5px;
+    font-size: 2.2rem;
+    color: var(--soft-purple);
+}
+
+.checkbox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.checkbox .icon {
+    opacity: 0;
+}
+
+.checkbox input:checked + .icon {
+    opacity: 1;
 }

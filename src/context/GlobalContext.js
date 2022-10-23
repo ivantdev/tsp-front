@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -7,15 +7,27 @@ const GlobalContext = React.createContext();
 const GlobalContextProvider = ( {children}) => {
     const [ message, setMessage ] = useState(null)
     const [ navState, setNavState ] = useState();
-
+    
     const { local, saveItem } = useLocalStorage("TSP_PROJECT", {});
+    const [ tripPlanning, setTripPlanning ] = useState({
+        title: "",
+        locations: [],
+        back_to_start: false,
+    });
+
     const route = useLocation().pathname;
+
 
     const endpoint = process.env.REACT_APP_ENDPOINT;
     const url_paths = {
         login: "/login",
         signup: "/signup"
     }
+
+    useEffect(() => {
+        setTripPlanning(local.tripPlanning);
+    }, [local]);
+
     const routes = {
         HomeRoute: "/",
         MapRoute: "/map",
@@ -58,6 +70,12 @@ const GlobalContextProvider = ( {children}) => {
             newNavState[route.substring(1)] = true;
         }
         setNavState(newNavState);
+
+        if (route==="/map") {
+            document.getElementsByTagName("body")[0].classList.add("nopadding")
+        } else {
+            document.getElementsByTagName("body")[0].classList.remove("nopadding")
+        }
     };
 
     return(
@@ -73,6 +91,8 @@ const GlobalContextProvider = ( {children}) => {
                 message,
                 setMessage,
                 local,
+                tripPlanning,
+                setTripPlanning,
                 saveItem,
             }
         }>

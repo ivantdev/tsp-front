@@ -10,6 +10,7 @@ import { NewTrip } from './NewTrip';
 import { History } from './History';
 import { Account } from './Account';
 import { NavBar } from './NavBar';
+import { updateViewportHeight } from '../utilities/updateViwportHeight';
 
 const App = () => {
     const { HomeRoute, MapRoute, NewTripRoute, HistoryRoute, AccountRoute } = useContext(GlobalContext).routes;

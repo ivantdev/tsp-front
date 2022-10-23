@@ -7,7 +7,6 @@ const useLocalStorage = (itemName, initialValue) => {
         try {
             let parsedItem;
             const localStorageItem = window.localStorage.getItem(itemName);
-
             if( !localStorageItem ) {
                 window.localStorage.setItem(itemName, JSON.stringify(initialValue));
                 parsedItem = [];
@@ -24,7 +23,9 @@ const useLocalStorage = (itemName, initialValue) => {
             const stringifyItem = JSON.stringify(newItem);
             window.localStorage.setItem(itemName, stringifyItem);
             setItem(newItem);
-        } catch{}
+        } catch{
+            console.error("localStorage Error");
+        }
     };
 
     return({
