@@ -1,15 +1,14 @@
 import '../styles/NewTrip.css'
 import { Name } from './Name'
 import { NavBar } from './NavBar'
+import { HeaderText } from './HeaderText'
 
 const NewTrip = () => {
     return (
         <>
         <div className="newtrip">
-            <h1>
-                where 
-                <span className="to"> to?</span> 
-            </h1>
+            <HeaderText text_1={ 'Where'}  text_2={ 'to?' } />
+            <hr />
             <Name/>
         </div>
         <NavBar/>

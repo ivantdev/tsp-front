@@ -1,25 +1,28 @@
 .btn {
-    background-color: grey; 
+    width: 19%;
+    height: 60px;
+    background-color: transparent;
     border: none; 
     color: white; 
     padding: 0; 
     font-size: 16px; 
-    cursor: pointer; 
+    cursor: white; 
 }
 
 input[type=text]{
     background-color: transparent;
-    border:none;
-    padding-top: 5px;
-    border-top: 10px;
-    color:white;
-    width: 250px;
-    font-size: 40px;
-    
+    width:fit-content;
+    block-size: fit-content;
+    height: 80px;
+    padding: 0 20px;
+    align-items:baseline;
+    font-size: 2.8rem;
+    cursor: default;
+    user-select: none;
+    color: white;
+    border:none
 }
 
-.btn{
-    width: 40px;
-    height: 40px;
-    
+form{
+    display:flow-root;
 }

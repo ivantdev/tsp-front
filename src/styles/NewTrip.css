@@ -1,10 +1,6 @@
-h1 {
-    color: white;
-    display:inline;
-    border-bottom: 3px solid white;
-    text-align: left;
-    font-size: 40px;
-}
-.to{
-    color:gray;
+.newtrip hr{
+    color:white;
+    width:50%;
+    height: 2px;
+    margin-left: 10px;
 }
