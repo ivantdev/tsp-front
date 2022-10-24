@@ -61,9 +61,21 @@ body.nopadding {
 }
 
 .app {
+    position: relative;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
 }
 
 .gm-style-cc { display:none; }
+
+.button {
+    width: 120px;
+    height: 38px;
+    font-family: "Libre Franklin";
+    font-size: 1.8rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--light-green);
+}

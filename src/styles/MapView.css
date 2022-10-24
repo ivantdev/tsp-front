@@ -75,3 +75,85 @@
     outline: none;
     background-color: transparent;;
 }
+
+.map__location-details-container {
+    position: absolute;
+    bottom: 120px;
+    z-index: 1;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    animation: show 300ms ease-in-out;
+}
+
+.map__location-details {
+    height: 100%;
+    width: 95%;
+    max-width: 440px;
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: "Libre Franklin";
+    background-color: var(--nav-black);
+    border-radius: 40px;
+}
+
+.map__location-details-container.hidden {
+    transform: translateY(400px);
+    animation: notShow 300ms ease-in-out;
+}
+
+.map__address {
+    height: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.map__address-complement {
+    height: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 1.4rem;
+}
+
+.map__coord {
+    font-size: 1.4rem;
+    color: var(--gray);
+}
+
+.map__options {
+    display: grid;
+    grid-template-columns: 120px 120px;
+    align-content: flex-end;
+    gap: 20px;
+}
+
+.map__options .cancel {
+    background-color: var(--light-blue);
+}
+
+
+@keyframes show {
+    from {
+        transform: translateY(calc(100% + 200px));
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes notShow {
+    from {
+        transform: translateY(0%);
+    }
+    to {
+        transform: translateY(calc(400px + 200px));
+    }
+}

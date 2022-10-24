@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
 import '../styles/App.css';
 import 'react-router-dom'
+import { useContext, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { GlobalContext } from '../context/GlobalContext';
@@ -10,12 +10,13 @@ import { NewTrip } from './NewTrip';
 import { History } from './History';
 import { Account } from './Account';
 import { NavBar } from './NavBar';
-import { updateViewportHeight } from '../utilities/updateViwportHeight';
+import { updateViewportHeight } from '../utilities/updateViewportHeight';
 
 const App = () => {
     const { HomeRoute, MapRoute, NewTripRoute, HistoryRoute, AccountRoute } = useContext(GlobalContext).routes;
     const { route, UpdateRoute } = useContext(GlobalContext);
     useEffect(UpdateRoute, [route]);
+    useEffect(updateViewportHeight, []);
     return (
         <div className="app">
             <Routes>

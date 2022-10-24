@@ -68,3 +68,10 @@
 .checkbox input:checked + .icon {
     opacity: 1;
 }
+
+.new-trip__button {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}

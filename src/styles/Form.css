@@ -42,15 +42,3 @@
     justify-content: center;
     align-items: center;
 }
-
-.form__button button {
-    width: 120px;
-    height: 100%;
-    font-family: "Libre Franklin";
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--nav-black);
-    background-color: var(--light-blue);
-    border: none;
-    border-radius: 30px;
-}

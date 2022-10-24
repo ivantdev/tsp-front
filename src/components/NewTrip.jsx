@@ -48,6 +48,10 @@ const NewTrip = () => {
 
                 
                 { tripPlanning?.locations && <ListLocations locations={tripPlanning.locations} />}
+
+                <div className="new-trip__button">
+                    <button className="button" type="button">start</button>
+                </div>
             </div>
         </div>
     );

@@ -1,11 +1,17 @@
 import { GoogleMap } from "@react-google-maps/api";
 
-const Map = () => {
+const Map = ({ queryLocation }) => {
+    const onClickMap = (e) => {
+        const params = `latlng=${e.latLng.lat()},${e.latLng.lng()}`;
+        queryLocation(params);
+    };
+
     return (
         <GoogleMap
             zoom={12}
             center={{lat: 40.778, lng: -73.962}}
             mapContainerClassName="map-literal-container"
+            onClick={onClickMap}
             options={{
                 disableDefaultUI: true,
                 mapId: ["35ed74a250b8d9e0"],

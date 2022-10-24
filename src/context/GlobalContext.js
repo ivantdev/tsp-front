@@ -7,6 +7,7 @@ const GlobalContext = React.createContext();
 const GlobalContextProvider = ( {children}) => {
     const [ message, setMessage ] = useState(null)
     const [ navState, setNavState ] = useState();
+    const [ locationDetails, setLocationDetails ] = useState(null);
     
     const { local, saveItem } = useLocalStorage("TSP_PROJECT", {});
     const [ tripPlanning, setTripPlanning ] = useState({
@@ -25,7 +26,11 @@ const GlobalContextProvider = ( {children}) => {
     }
 
     useEffect(() => {
-        setTripPlanning(local.tripPlanning);
+        if(local?.tripPlanning) {
+            setTripPlanning(local.tripPlanning);
+        } else {
+            setTripPlanning(tripPlanning);
+        }
     }, [local]);
 
     const routes = {
@@ -94,6 +99,8 @@ const GlobalContextProvider = ( {children}) => {
                 tripPlanning,
                 setTripPlanning,
                 saveItem,
+                locationDetails,
+                setLocationDetails,
             }
         }>
             {children}
