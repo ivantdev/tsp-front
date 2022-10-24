@@ -6,10 +6,12 @@ const Map = ({ queryLocation }) => {
         queryLocation(params);
     };
 
+    const coors = useMemo(() => ({lat: 40.778, lng: -73.962}), []);
+
     return (
         <GoogleMap
             zoom={12}
-            center={{lat: 40.778, lng: -73.962}}
+            center={coors}
             mapContainerClassName="map-literal-container"
             onClick={onClickMap}
             options={{

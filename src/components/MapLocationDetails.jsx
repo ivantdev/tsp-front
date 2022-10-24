@@ -3,7 +3,6 @@ import { GlobalContext } from "../context/GlobalContext";
 
 const MapLocationDetails = () => {
     const { locationDetails, setLocationDetails, tripPlanning, setTripPlanning, local, saveItem } = useContext(GlobalContext);
-    console.log(tripPlanning);
 
     const onClickCancel = () => {
         document.getElementsByClassName("map__location-details-container")[0].classList.add('hidden');
