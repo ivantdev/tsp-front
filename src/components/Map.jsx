@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { GoogleMap } from "@react-google-maps/api";
 
 const Map = ({ queryLocation }) => {
