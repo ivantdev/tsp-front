@@ -1,26 +1,29 @@
-import { useContext, useLayoutEffect } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 const MapLocationDetails = () => {
-    const { locationDetails, setLocationDetails, tripPlanning, setTripPlanning, local, saveItem } = useContext(GlobalContext);
+    const { locationDetails, setLocationDetails, tripPlanning, local, saveItem } = useContext(GlobalContext);
 
     const onClickCancel = () => {
-        document.getElementsByClassName("map__location-details-container")[0].classList.add('hidden');
+        document.getElementsByClassName("map__location-details")[0].classList.add('hidden');
         setTimeout(()=> {
             setLocationDetails(null);
         }, 300);
     };
 
     const onClickAddPlace = () => {
+        console.log(tripPlanning);
+        const locations = tripPlanning.locations;
+        locations.push({...locationDetails, id: tripPlanning.locations.length +1 })
         const newTripPlanning = {
             ...tripPlanning,
-            locations: tripPlanning.locations.push({...locationDetails, id: tripPlanning.locations.length +1 }),
+            locations,
         }
         const newLocal = {
             ...local,
             "tripPlanning": newTripPlanning,
-        }
-        saveItem(local);
+        };
+        saveItem(newLocal);
         onClickCancel();
     };
     
@@ -32,7 +35,7 @@ const MapLocationDetails = () => {
                 </div>
                 <div className="map__address-complement">
                     <p>{locationDetails.address_complement}</p>
-                    <p className="map__coord">{locationDetails.coord.lat}, {locationDetails.coord.lng}</p>
+                    <p className="map__coord">{locationDetails.coordinates.lat}, {locationDetails.coordinates.lng}</p>
 
                 </div>
                 <div className="map__options">

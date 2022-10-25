@@ -84,7 +84,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    animation: show 300ms ease-in-out;
+    overflow: hidden;
 }
 
 .map__location-details {
@@ -97,9 +97,10 @@
     font-family: "Libre Franklin";
     background-color: var(--nav-black);
     border-radius: 40px;
+    animation: show 300ms ease-in-out;
 }
 
-.map__location-details-container.hidden {
+.map__location-details.hidden {
     transform: translateY(400px);
     animation: notShow 300ms ease-in-out;
 }

@@ -1,40 +1,53 @@
-import { useLoadScript } from "@react-google-maps/api"
 import { Map } from "./Map";
-import { Loading } from "./Loading";
-import "../styles/MapView.css";
 import { updateViewportHeight } from "../utilities/updateViewportHeight";
 import { MapLocationDetails } from "./MapLocationDetails";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalContext";
-import { geocoding } from "../utilities/geocoding";
-
+import { Loader } from "@googlemaps/js-api-loader";
+import "../styles/MapView.css";
 const MapView = () => {
-    const { locationDetails, setLocationDetails } = useContext(GlobalContext);
+    const { locationDetails, setLocationDetails, google, setGoogle, geocoder, setGeocoder } = useContext(GlobalContext);
+    updateViewportHeight();
 
-    const queryLocation = async (params) => {
-        const { status, response } = await geocoding(params);
-        if(status === 200 && response?.status === "OK"){
-            const result = await response.results[0];
-            const full_address = result.formatted_address.split(", ");
-            const address = full_address.shift();
-            const address_complement = full_address.join(", ");
-            const coord = { ...result.geometry.location };
-            const place_id = result.place_id;
+    useEffect(() => {
+    const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+    const loader = new Loader({
+        apiKey: API_KEY,
+        version: "weekly",
+    });
 
-            const data = {
-                address,
-                address_complement,
-                coord,
-                place_id,
+    loader.load().then((ggle) => {
+        setGoogle(ggle);
+        const geoc = new ggle.maps.Geocoder()
+        setGeocoder(geoc);
+    })
+    }, []);
+
+    if( !google ) return;
+
+    const queryLocation = async (query) => {
+        geocoder.geocode(query, (response, status) => {
+            if(status === "OK"){
+                const result = response[0];
+                const full_address = result.formatted_address.split(", ");
+                const address = full_address.shift();
+                const address_complement = full_address.join(", ");
+                const coordinates = { "lat": result.geometry.location.lat(), "lng": result.geometry.location.lng() };
+                const place_id = result.place_id;
+    
+                const data = {
+                    address,
+                    address_complement,
+                    coordinates,
+                    place_id,
+                }
+    
+                setLocationDetails(data);
             }
 
-            setLocationDetails(data);
-        }
+        });
     };
 
-    const { isLoaded } = useLoadScript( {
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    } );
 
     const onClickBack = () => {
         window.history.back();
@@ -48,12 +61,10 @@ const MapView = () => {
             data[key] = value;
         })
 
-        const params = `address=${data.query}`;
-        queryLocation(params);
+        const place = { address: data.query };
+        queryLocation(place);
     };
 
-    if (!isLoaded) return <Loading />;
-    updateViewportHeight();
     return (
         <>
             <div className="mapview">
@@ -70,7 +81,9 @@ const MapView = () => {
                         </form>
                     </div>
 
-                    <Map queryLocation={queryLocation}/>
+                    <div id="map" className="map-literal-container">
+                        <Map queryLocation={queryLocation}/>
+                    </div>
 
                 </div>
             </div>

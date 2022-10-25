@@ -1,30 +1,33 @@
-import { useMemo } from "react";
-import { GoogleMap } from "@react-google-maps/api";
+import { useContext, useLayoutEffect } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
 const Map = ({ queryLocation }) => {
     const onClickMap = (e) => {
-        const params = `latlng=${e.latLng.lat()},${e.latLng.lng()}`;
-        queryLocation(params);
+        const location = { 
+            location: e.latLng,
+        };
+        queryLocation(location);
+    };
+    
+    const { google } = useContext(GlobalContext);
+    const options = {
+        center: {lat: 40.778, lng: -73.962},
+        zoom: 12,
+        disableDefaultUI: true,
+        mapId: ["35ed74a250b8d9e0"],
+        keyboardShortcuts: false,
+        gestureHandling: "greedy",
     };
 
-    const coors = useMemo(() => ({lat: 40.778, lng: -73.962}), []);
+    useLayoutEffect(() => {
+        const map  = new google.maps.Map(document.getElementById("map"), options);
+        map.addListener("click", onClickMap);
 
-    return (
-        <GoogleMap
-            zoom={12}
-            center={coors}
-            mapContainerClassName="map-literal-container"
-            onClick={onClickMap}
-            options={{
-                disableDefaultUI: true,
-                mapId: ["35ed74a250b8d9e0"],
-                keyboardShortcuts: false,
-                gestureHandling: "greedy",
-            }}
-        >
+    }, []);
 
-        </GoogleMap>
-    );
+
+
+    return;
 };
 
 export { Map };

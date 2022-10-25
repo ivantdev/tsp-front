@@ -8,6 +8,8 @@ const GlobalContextProvider = ( {children}) => {
     const [ message, setMessage ] = useState(null)
     const [ navState, setNavState ] = useState();
     const [ locationDetails, setLocationDetails ] = useState(null);
+    const [ google, setGoogle ] = useState(null);
+    const [ geocoder, setGeocoder ] = useState(null);
     
     const { local, saveItem } = useLocalStorage("TSP_PROJECT", {});
     const [ tripPlanning, setTripPlanning ] = useState({
@@ -101,6 +103,10 @@ const GlobalContextProvider = ( {children}) => {
                 saveItem,
                 locationDetails,
                 setLocationDetails,
+                google,
+                setGoogle,
+                geocoder,
+                setGeocoder,
             }
         }>
             {children}
