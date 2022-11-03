@@ -38,7 +38,7 @@ Styles for NavBar
 }
 
 .nav-item.plus a{
-    background-color: var(--soft-purple);
+    background-color: var(--soft-purple-alpha);
     width: 70px;
     height: 70px;
     display: flex;
@@ -54,4 +54,31 @@ Styles for NavBar
 
 .nav-item a.active {
     color: var(--nav-button-active);
+}
+
+.nav-item.animation {
+    animation: shake 500ms ease infinite;
+}
+
+.nav-item.animation a {
+    color: var(--nav-button-active);
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(20deg) scale(1.2);
+
+    }
+    50% {
+        transform: rotate(0deg scale(1.3));
+    }
+    75% {
+        transform: rotate(-20deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
