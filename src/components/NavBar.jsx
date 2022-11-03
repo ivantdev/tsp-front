@@ -23,7 +23,7 @@ const NavBar = () => {
                     </li>
                     <li className="nav-item plus">
                         <Link className={navState?.new ? "active": ""} to={ NewTripRoute }>
-                            <i className="fa-regular fa-plus"></i>
+                            <i className="fa-duotone fa-wand-magic-sparkles"></i>
                         </Link>
                     </li>
                     <li className="nav-item">

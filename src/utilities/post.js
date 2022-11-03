@@ -1,8 +1,8 @@
 
 import axios from "axios";
 
-const post = async (url, data) => {
-    const {status, response } = await axios.post(url, data)
+const post = async (url, data, config = {}) => {
+    const { status, response } = await axios.post(url, data, config=config)
         .then(response => {
             return ({
                 "status": response.status,

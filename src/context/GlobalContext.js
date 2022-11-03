@@ -10,6 +10,7 @@ const GlobalContextProvider = ( {children}) => {
     const [ locationDetails, setLocationDetails ] = useState(null);
     const [ google, setGoogle ] = useState(null);
     const [ geocoder, setGeocoder ] = useState(null);
+    const [ track, setTrack ] = useState(null);
     
     const { local, saveItem } = useLocalStorage("TSP_PROJECT", {});
     const [ tripPlanning, setTripPlanning ] = useState({
@@ -24,7 +25,8 @@ const GlobalContextProvider = ( {children}) => {
     const endpoint = process.env.REACT_APP_ENDPOINT;
     const url_paths = {
         login: "/login",
-        signup: "/signup"
+        signup: "/signup",
+        shortestpath: "/shortestpath"
     }
 
     useEffect(() => {
@@ -40,7 +42,7 @@ const GlobalContextProvider = ( {children}) => {
         MapRoute: "/map",
         NewTripRoute: "/new-trip",
         HistoryRoute: "/history",
-        AccountRoute: "/account"
+        AccountRoute: "/account",
     }
     const banners = [
         {
@@ -67,14 +69,15 @@ const GlobalContextProvider = ( {children}) => {
         account: false
     };
 
-
     const UpdateRoute = () => {
         const newNavState = { ...defaultNavState };
         if (route === "/") {
             newNavState.home = true;
-            
         } else {
             newNavState[route.substring(1)] = true;
+        }
+        if(route === "/new-trip") {
+            newNavState.new = true;
         }
         setNavState(newNavState);
 
@@ -107,6 +110,8 @@ const GlobalContextProvider = ( {children}) => {
                 setGoogle,
                 geocoder,
                 setGeocoder,
+                track,
+                setTrack,
             }
         }>
             {children}

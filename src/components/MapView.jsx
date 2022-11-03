@@ -82,7 +82,7 @@ const MapView = () => {
                     </div>
 
                     <div id="map" className="map-literal-container">
-                        <Map queryLocation={queryLocation}/>
+                        <Map queryLocation={queryLocation} container={"map"} />
                     </div>
 
                 </div>

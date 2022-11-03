@@ -1,0 +1,9 @@
+.tripMap {
+    width: 100%;
+    height: var(--100vh);
+}
+
+.tripMap-container {
+    width: 100%;
+    height: var(--100vh);
+}
