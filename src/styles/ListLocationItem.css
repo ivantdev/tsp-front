@@ -31,3 +31,8 @@
     padding-left: 20px;
     color: var(--gray);
 }
+
+.location__item .delete {
+    font-size: 2.4rem;
+    color: var(--light-red);
+}

@@ -10,7 +10,6 @@ import { TripOnMap } from "./TripTrack";
 
 const NewTrip = () => {
     const { tripPlanning, saveItem, local, message, setMessage, endpoint, url_paths, track, setTrack } = useContext(GlobalContext);
-    console.log(track);
     const onClickStart = async () => {
         if(tripPlanning.locations.length  !== 2) {
             setMessage("please select only 2 locations");
@@ -103,7 +102,7 @@ const NewTrip = () => {
                 { tripPlanning?.locations && <ListLocations locations={tripPlanning.locations} />}
 
                 <div className="new-trip__button">
-                    <button className="button" type="button" onClick={onClickStart}>start</button>
+                    <button className="button" type="button" onClick={onClickStart} >start</button>
                 </div>
             </div>
         </div>

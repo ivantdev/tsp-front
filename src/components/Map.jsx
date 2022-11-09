@@ -13,8 +13,8 @@ const Map = ({ queryLocation, center, container, zoom, pathCoordinates }) => {
     
     const { google } = useContext(GlobalContext);
     const options = {
-        center: center || {lat: 40.778, lng: -73.962},
-        zoom: zoom | 12,
+        center: center || {lat: 4.63777, lng: -74.084},
+        zoom: zoom | 15,
         disableDefaultUI: true,
         mapId: ["35ed74a250b8d9e0"],
         keyboardShortcuts: false,
@@ -22,7 +22,6 @@ const Map = ({ queryLocation, center, container, zoom, pathCoordinates }) => {
     };
 
     useLayoutEffect(() => {
-        console.log(pathCoordinates);
         const map  = new google.maps.Map(document.getElementById(container), options);
         map.addListener("click", onClickMap);
 

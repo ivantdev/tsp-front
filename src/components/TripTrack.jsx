@@ -21,7 +21,6 @@ const TripOnMap = () => {
         })
         return 
     }
-    console.log(track);
     return (
         <div className="tripMap">
             <div id="trip-map" className="tripMap-container">
