@@ -32,7 +32,7 @@ const MapView = () => {
                 const full_address = result.formatted_address.split(", ");
                 const address = full_address.shift();
                 const address_complement = full_address.join(", ");
-                const coordinates = { "lat": result.geometry.location.lat(), "lng": result.geometry.location.lng() };
+                const coordinates = { "lat": result.geometry.location.lat(), "lng": result.geometry.location.lng(), "id": 0};
                 const place_id = result.place_id;
     
                 const data = {

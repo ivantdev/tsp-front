@@ -12,7 +12,6 @@ const MapLocationDetails = () => {
     };
 
     const onClickAddPlace = () => {
-        console.log(tripPlanning);
         const locations = tripPlanning.locations;
         locations.push({...locationDetails, id: tripPlanning.locations.length +1 })
         const newTripPlanning = {
