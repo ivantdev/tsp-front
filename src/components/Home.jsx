@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 import "../styles/Home.css";
 import { Banners } from "./Banners";
 
 const Home = () => {
+    const { setLoading } = useContext(GlobalContext);
+    setLoading(false);
     return (
         <>
             <div className="home">
