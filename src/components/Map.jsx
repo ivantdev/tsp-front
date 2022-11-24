@@ -2,16 +2,20 @@ import { useContext, useLayoutEffect } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 const Map = ({ queryLocation, center, container, zoom, pathCoordinates }) => {
+    const { google, setLoading } = useContext(GlobalContext);
+
     const onClickMap = (e) => {
+        setLoading(true);
         const location = { 
             location: e.latLng,
         };
         if (queryLocation) {
             queryLocation(location);
+        } else {
+            setLoading(false);
         }
     };
     
-    const { google } = useContext(GlobalContext);
     const options = {
         center: center || {lat: 4.63777, lng: -74.084},
         zoom: zoom | 15,
@@ -22,10 +26,28 @@ const Map = ({ queryLocation, center, container, zoom, pathCoordinates }) => {
     };
 
     useLayoutEffect(() => {
+        setLoading(false);
         const map  = new google.maps.Map(document.getElementById(container), options);
         map.addListener("click", onClickMap);
 
         if(pathCoordinates) {
+            new google.maps.Marker({
+                position: pathCoordinates[0],
+                label: {
+                    text: "1",
+                    fontSize: "20px",
+                    fontFamily: "Libre Franklin",
+                    fontWeight: "700",
+                    paddingBottom: "20px"
+                },
+                icon: {
+                    url: "https://objects.ivant.dev/public/projects/tsp/imgs/custom_marker.svg",
+                    size: new google.maps.Size(60,60),
+                    scaledSize: new google.maps.Size(60, 60),
+                    labelOrigin: new google.maps.Point(30, 25)
+                },
+                map
+            })
             const path = new google.maps.Polyline({
                 path: pathCoordinates,
                 geodesic: true,
