@@ -23,6 +23,7 @@ vars
     --light-green: #CDE9D4;
     --light-red: #FF3333;
     --gray: #6F6F6F;
+    --loading: #9FA8E0;
 
     --100vh: 0px;
 }
@@ -78,4 +79,29 @@ body.nopadding {
     border: none;
     border-radius: 20px;
     background-color: var(--light-green);
+}
+
+.loading {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: var(--100vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff3a;
+    opacity: 0;
+    transition: opacity 300s;
+}
+
+.loading.active {
+    opacity: 1;
+    transition: opacity 300s;
+}
+
+.loading .icon {
+    font-size: 6rem;
+    color: var(--loading);
 }
