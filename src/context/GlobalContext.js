@@ -11,6 +11,7 @@ const GlobalContextProvider = ( {children}) => {
     const [ google, setGoogle ] = useState(null);
     const [ geocoder, setGeocoder ] = useState(null);
     const [ track, setTrack ] = useState(null);
+    const [ loading, setLoading ] = useState(true);
     
     const { local, saveItem } = useLocalStorage("TSP_PROJECT", {});
     const [ tripPlanning, setTripPlanning ] = useState({
@@ -88,9 +89,17 @@ const GlobalContextProvider = ( {children}) => {
         }
     };
 
+    const user = {
+        name: "pending",
+        phone: "pending",
+        email: "ivan@ivant.dev"
+    }
+
     return(
         <GlobalContext.Provider value={
             {
+                loading,
+                setLoading,
                 routes,
                 banners,
                 route,
@@ -112,6 +121,7 @@ const GlobalContextProvider = ( {children}) => {
                 setGeocoder,
                 track,
                 setTrack,
+                user,
             }
         }>
             {children}
