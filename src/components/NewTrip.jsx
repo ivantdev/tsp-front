@@ -6,19 +6,14 @@ import { ListLocations } from "./ListLocations";
 import { saveToLocal } from "../utilities/saveToLocal";
 import { Message } from "./Message";
 import { post } from "../utilities/post";
-import { TripOnMap } from "./TripTrack";
+import { TripTrack } from "./TripTrack";
+import { useEffect } from 'react';
 
 const NewTrip = () => {
-    const { tripPlanning, saveItem, local, message, setMessage, endpoint, url_paths, track, setTrack } = useContext(GlobalContext);
-    const onClickStart = async () => {
-        if(tripPlanning.locations.length  !== 2) {
-            setMessage("please select only 2 locations");
-            setTimeout(() => {
-                setMessage(null);
-            }, 5000)
-            return
-        }
+    const { tripPlanning, saveItem, local, message, setMessage, endpoint, url_paths, track, setTrack, setLoading } = useContext(GlobalContext);
 
+    const onClickStart = async () => {
+        setLoading(true);
         const config = {
             headers: {
                 "Authorization": `Bearer ${local.token}`
@@ -68,13 +63,16 @@ const NewTrip = () => {
             [e.target.name]: e.target.checked
         };
 
-        saveToLocal( "tripPlanning",newTripPlanning, saveItem, local);
+        saveToLocal( "tripPlanning", newTripPlanning, saveItem, local);
     }
+
+    useEffect(() => {
+        setLoading(false);
+    }, []);
 
     if( track ) {
-        return <TripOnMap />
+        return <TripTrack />
     }
-
     return (
         <div className="trip__details">
             <HeaderText text_1={"where"} text_2={"to?"}></HeaderText>
