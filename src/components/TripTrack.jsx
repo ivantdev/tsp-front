@@ -1,11 +1,12 @@
 import "../styles/TripTrack.css";
+import "../styles/MapView.css";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { Map } from "./Map";
 import { Loader } from "@googlemaps/js-api-loader";
 
-const TripOnMap = () => {
-    const { track, google, setGoogle, setGeocoder } = useContext(GlobalContext);
+const TripTrack = () => {
+    const { track, setTrack, google, setGoogle, setGeocoder } = useContext(GlobalContext);
 
     if (!google) {
         const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
@@ -21,8 +22,24 @@ const TripOnMap = () => {
         })
         return 
     }
+
+    const onClickBack = () => {
+        setTrack(null);
+    };
+
+    console.log(track);
+
     return (
         <div className="tripMap">
+            <div className="map__header">
+                <button type="button" className="map__back" onClick={onClickBack}>
+                    <i className="fa-regular fa-arrow-left-long"></i>
+                </button>
+                <div className="trip__title">
+                    <input type="text" value={track.title} disabled placeholder="A new trip" />
+                </div>
+            </div>
+
             <div id="trip-map" className="tripMap-container">
                 <Map center={track.locations[0].coordinates} container={"trip-map"} zoom={15} pathCoordinates={track.path} ></Map>
             </div>
@@ -30,4 +47,4 @@ const TripOnMap = () => {
     )
 };
 
-export { TripOnMap }
+export { TripTrack }
