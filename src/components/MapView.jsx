@@ -7,20 +7,22 @@ import { Loader } from "@googlemaps/js-api-loader";
 import "../styles/MapView.css";
 const MapView = () => {
     const { locationDetails, setLocationDetails, google, setGoogle, geocoder, setGeocoder } = useContext(GlobalContext);
+    const { setLoading } = useContext(GlobalContext);
     updateViewportHeight();
 
     useEffect(() => {
-    const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-    const loader = new Loader({
-        apiKey: API_KEY,
-        version: "weekly",
-    });
+        setLoading(false);
+        const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+        const loader = new Loader({
+            apiKey: API_KEY,
+            version: "weekly",
+        });
 
-    loader.load().then((ggle) => {
-        setGoogle(ggle);
-        const geoc = new ggle.maps.Geocoder()
-        setGeocoder(geoc);
-    })
+        loader.load().then((ggle) => {
+            setGoogle(ggle);
+            const geoc = new ggle.maps.Geocoder()
+            setGeocoder(geoc);
+        })
     }, []);
 
     if( !google ) return;
@@ -44,16 +46,18 @@ const MapView = () => {
     
                 setLocationDetails(data);
             }
-
+            setLoading(false);
         });
     };
 
 
     const onClickBack = () => {
+        setLoading(true);
         window.history.back();
     };
 
     const onSubmitPlace = (e) => {
+        setLoading(true);
         e.preventDefault();
         const form = new FormData(e.target);
         const data = {};
