@@ -1,3 +1,7 @@
+.account__container {
+    padding-bottom: 50px;
+}
+
 .account__picture {
     width: 70%;
     max-width: 500px;
@@ -50,4 +54,8 @@
 
 .account__options .icon {
     font-size: 3.5rem;
+}
+
+.account__options .option__delete {
+    color: var(--light-red)
 }

@@ -5,7 +5,7 @@ import { Message } from "./Message";
 import { post } from "../utilities/post";
 
 const LoginForm = () => {
-    const { endpoint, url_paths, message, setMessage, local, saveItem } = useContext(GlobalContext);
+    const { endpoint, url_paths, message, setMessage, local, saveItem, setLoading} = useContext(GlobalContext);
 
     const onSubmitLogin = async (e) => {
         e.preventDefault();
@@ -21,7 +21,7 @@ const LoginForm = () => {
             setMessage(response.message);
             setTimeout(() => {
                 setMessage(null);
-            }, 3000)
+            }, 3000);
         } else{
             const newLocal = {...local, ...{"token": response.token}};
             saveItem(newLocal);

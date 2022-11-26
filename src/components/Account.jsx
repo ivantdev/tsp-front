@@ -1,18 +1,43 @@
 import "../styles/Account.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { Log } from "./Log";
 import { HeaderText } from "./HeaderText";
+import { get } from "../utilities/get";
+import { useState } from "react";
 
 const Account = () => {
-    const { local, user, setLoading } = useContext(GlobalContext);
+    const { local, setLoading, endpoint, url_paths } = useContext(GlobalContext);
+    const [ user, setUser ] = useState(null);
+
+    const get_user = async () => {
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${local.token}`,
+            }
+        };
+        const { status, response } = await get(endpoint + url_paths.user, config);
+        if(status == 200) {
+            setUser(response);
+        }
+
+
+        setLoading(false)
+    }
+    useEffect(() => {
+        if( local?.token) {
+            get_user();
+        } else {
+            setLoading(false);
+        }
+    }, [local]);
+
     if ( !local?.token ) {
         return(
             <Log />
         )
     }
 
-    setLoading(false);
     return (
         <div className="account__container">
             <HeaderText text_1={"my"} text_2={"account"} />
@@ -28,7 +53,7 @@ const Account = () => {
 
                 <div className="account__data">
                     <h3>{user?.name}</h3>
-                    <span>phone: {user?.phone}</span>
+                    <span>username: {user?.username}</span>
                     <span>e-mail: {user?.email}</span>
                 </div>
 

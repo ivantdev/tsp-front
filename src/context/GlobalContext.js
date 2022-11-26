@@ -27,7 +27,9 @@ const GlobalContextProvider = ( {children}) => {
     const url_paths = {
         login: "/login",
         signup: "/signup",
-        shortestpath: "/shortestpath"
+        shortestpath: "/shortestpath",
+        history: "/history/",
+        user: "/user/",
     }
 
     useEffect(() => {
@@ -89,12 +91,6 @@ const GlobalContextProvider = ( {children}) => {
         }
     };
 
-    const user = {
-        name: "pending",
-        phone: "pending",
-        email: "ivan@ivant.dev"
-    }
-
     return(
         <GlobalContext.Provider value={
             {
@@ -121,7 +117,6 @@ const GlobalContextProvider = ( {children}) => {
                 setGeocoder,
                 track,
                 setTrack,
-                user,
             }
         }>
             {children}

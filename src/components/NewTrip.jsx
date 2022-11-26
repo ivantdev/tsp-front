@@ -46,7 +46,7 @@ const NewTrip = () => {
                 setMessage(null);
             }, 2000)
         }
-
+        setLoading(false);
 
     };
     const onChangeTripTitle = (e) => {

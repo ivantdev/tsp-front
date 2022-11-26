@@ -27,8 +27,6 @@ const TripTrack = () => {
         setTrack(null);
     };
 
-    console.log(track);
-
     return (
         <div className="tripMap">
             <div className="map__header">
@@ -36,7 +34,7 @@ const TripTrack = () => {
                     <i className="fa-regular fa-arrow-left-long"></i>
                 </button>
                 <div className="trip__title">
-                    <input type="text" value={track.title} disabled placeholder="A new trip" />
+                    <span>{track?.title || "a trip"}</span>
                 </div>
             </div>
 

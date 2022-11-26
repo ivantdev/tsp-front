@@ -51,11 +51,8 @@
 }
 
 .home__map {
+    margin-top: 30px;
     font-size: 1.8rem;
-}
-
-.home__map h3 {
-    margin: 40px 10px 20px;
 }
 
 .home__map-container {
@@ -67,4 +64,16 @@
     height: 200px;
     object-fit: cover;
     border-radius: 50px;
+}
+
+.home_link {
+    display: block;
+    width: max-content;
+    color: unset;
+    text-decoration: none;
+}
+
+.home_link h3 {
+    width: max-content;
+    margin-bottom: 20px;
 }

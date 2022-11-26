@@ -9,7 +9,11 @@
     height: var(--100vh);
 }
 
-.map__header .trip__title input {
+.tripMap .trip__title {
+    display: flex;
+}
+
+.map__header .trip__title span {
     width: 100%;
     color: var(--white);
     background-color: transparent;

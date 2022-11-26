@@ -5,9 +5,10 @@ import { Message } from "./Message";
 import { post } from "../utilities/post";
 
 const SignUpForm = () => {
-    const { endpoint, url_paths, message, setMessage, local, saveItem } = useContext(GlobalContext);
+    const { endpoint, url_paths, message, setMessage, local, saveItem, setLoading } = useContext(GlobalContext);
 
     const onSubmitSignUp = async (e) => {
+        setLoading(true);
         e.preventDefault();
         const form = new FormData(e.target);
         const data = {};
@@ -33,6 +34,8 @@ const SignUpForm = () => {
             const newLocal = {...local, ...{"token": response.token}};
             saveItem(newLocal);
         }
+        setLoading(false);
+
     };
 
     return (
