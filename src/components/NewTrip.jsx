@@ -35,8 +35,7 @@ const NewTrip = () => {
             }, 2000)
         } else if (status === 200 ) {
             const newTrack = {
-                ...tripPlanning,
-                path: response.path,
+                ...response,
             };
             setTrack(newTrack);
 

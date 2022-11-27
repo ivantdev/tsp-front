@@ -54,7 +54,6 @@ body {
     font-family: "Libre Franklin";
     min-height: var(--100vh);
     color: var(--white);
-    padding-bottom: 100px;
 }
 
 body.nopadding {
@@ -79,10 +78,11 @@ body.nopadding {
     border: none;
     border-radius: 20px;
     background-color: var(--light-green);
+    color: #000000;
 }
 
 .loading {
-    position: absolute;
+    position: fixed;
     z-index: 3;
     left: 0;
     top: 0;

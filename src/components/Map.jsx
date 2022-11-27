@@ -1,7 +1,7 @@
 import { useContext, useLayoutEffect } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
-const Map = ({ queryLocation, center, container, zoom, pathCoordinates }) => {
+const Map = ({ queryLocation, center, container, zoom, pathCoordinates, markers }) => {
     const { google, setLoading } = useContext(GlobalContext);
 
     const onClickMap = (e) => {
@@ -31,23 +31,27 @@ const Map = ({ queryLocation, center, container, zoom, pathCoordinates }) => {
         map.addListener("click", onClickMap);
 
         if(pathCoordinates) {
-            new google.maps.Marker({
-                position: pathCoordinates[0],
-                label: {
-                    text: "1",
-                    fontSize: "20px",
-                    fontFamily: "Libre Franklin",
-                    fontWeight: "700",
-                    paddingBottom: "20px"
-                },
-                icon: {
-                    url: "https://objects.ivant.dev/public/projects/tsp/imgs/custom_marker.svg",
-                    size: new google.maps.Size(60,60),
-                    scaledSize: new google.maps.Size(60, 60),
-                    labelOrigin: new google.maps.Point(30, 25)
-                },
-                map
-            })
+            if(markers) {
+                for(let i = 0; i < markers.length - 1; i++) {
+                    new google.maps.Marker({
+                        position: markers[i].location,
+                        label: {
+                            text: markers[i].label,
+                            fontSize: "20px",
+                            fontFamily: "Libre Franklin",
+                            fontWeight: "700",
+                            paddingBottom: "20px"
+                        }, 
+                        icon: {
+                            url: "https://objects.ivant.dev/public/projects/tsp/imgs/custom_marker.svg",
+                            size: new google.maps.Size(60,60),
+                            scaledSize: new google.maps.Size(60, 60),
+                            labelOrigin: new google.maps.Point(30, 25)
+                        },
+                        map
+                    })
+                }
+            }
             const path = new google.maps.Polyline({
                 path: pathCoordinates,
                 geodesic: true,

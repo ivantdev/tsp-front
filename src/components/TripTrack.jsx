@@ -26,6 +26,7 @@ const TripTrack = () => {
     const onClickBack = () => {
         setTrack(null);
     };
+    console.log(track);
 
     return (
         <div className="tripMap">
@@ -39,7 +40,7 @@ const TripTrack = () => {
             </div>
 
             <div id="trip-map" className="tripMap-container">
-                <Map center={track.locations[0].coordinates} container={"trip-map"} zoom={15} pathCoordinates={track.path} ></Map>
+                <Map center={track.locations[0].location} container={"trip-map"} zoom={15} pathCoordinates={track.path} markers={track.locations} ></Map>
             </div>
         </div>
     )
