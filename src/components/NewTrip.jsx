@@ -38,6 +38,11 @@ const NewTrip = () => {
                 ...response,
             };
             setTrack(newTrack);
+            const newLocal = {
+                ...local,
+                "tripPlanning": {},
+            }
+            saveItem(newLocal);
 
         } else {
             setMessage("Unexpected error");
