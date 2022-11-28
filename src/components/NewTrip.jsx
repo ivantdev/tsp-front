@@ -40,7 +40,11 @@ const NewTrip = () => {
             setTrack(newTrack);
             const newLocal = {
                 ...local,
-                "tripPlanning": {},
+                "tripPlanning": {
+                    title: "",
+                    locations: [],
+                    back_to_start: false,
+                },
             }
             saveItem(newLocal);
 
