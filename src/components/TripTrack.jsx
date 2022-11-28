@@ -5,8 +5,14 @@ import { GlobalContext } from "../context/GlobalContext";
 import { Map } from "./Map";
 import { Loader } from "@googlemaps/js-api-loader";
 
-const TripTrack = () => {
-    const { track, setTrack, google, setGoogle, setGeocoder } = useContext(GlobalContext);
+const TripTrack = ( { newTrip=false, repeatTrip=false } ) => {
+    const { track, setTrack, repeatTrack, setRepeatTrack, google, setGoogle, setGeocoder } = useContext(GlobalContext);
+    let currentTrack;
+    if(newTrip && !repeatTrip) {
+        currentTrack = track;
+    } else {
+        currentTrack = repeatTrack;
+    }
 
     if (!google) {
         const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
@@ -24,9 +30,12 @@ const TripTrack = () => {
     }
 
     const onClickBack = () => {
-        setTrack(null);
+        if(newTrip) {
+            setTrack(null);
+        } else {
+            setRepeatTrack(null);
+        }
     };
-    console.log(track);
 
     return (
         <div className="tripMap">
@@ -35,12 +44,12 @@ const TripTrack = () => {
                     <i className="fa-regular fa-arrow-left-long"></i>
                 </button>
                 <div className="trip__title">
-                    <span>{track?.title || "a trip"}</span>
+                    <span>{currentTrack?.title || "a trip"}</span>
                 </div>
             </div>
 
             <div id="trip-map" className="tripMap-container">
-                <Map center={track.locations[0].location} container={"trip-map"} zoom={15} pathCoordinates={track.path} markers={track.locations} ></Map>
+                <Map center={currentTrack.locations[0].location} container={"trip-map"} zoom={15} pathCoordinates={currentTrack.path} markers={currentTrack.locations} ></Map>
             </div>
         </div>
     )

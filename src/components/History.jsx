@@ -9,13 +9,17 @@ import "../styles/History.css";
 import { useState } from "react";
 import { HistoryEmpty } from "./HistoryEmpty";
 import { ListTrips } from "./ListTrips";
+import { HistoryTripDetails } from "./HistoryTripDetails";
+import { TripTrack } from "./TripTrack";
 
 const History = () => {
-    const { local, endpoint, url_paths, message, setMessage, setLoading } = useContext(GlobalContext);
-    const [ trips, setTrips ] = useState(null);
+    const { local, endpoint, url_paths, message, setMessage, setLoading, repeatTrack } = useContext(GlobalContext);
+    const [ trips, setTrips ] = useState([]);
     const [ page, setPage ] = useState(0);
+    const [ loadMore, setLoadMore ] = useState(true);
+    const [ details, setDetails] = useState(false);
 
-    const getTrips = async () => {
+    const getTrips = async (page) => {
         setLoading(true);
         const config = {
             headers: {
@@ -29,15 +33,26 @@ const History = () => {
                 setMessage(null);
             }, 3000);
         } else {
-            
-        }
+            let data = await response.data;
+            if(data.length == 0) {
+                setLoadMore(false);
+            }
+            data = trips.concat(data);
 
+            setTrips(data);
+        }
         setLoading(false);
+    };
+
+    const onClickLoadMore = (e) => {
+        e.preventDefault();
+        getTrips(page+1);
+        setPage(page+1);
     };
     
     useEffect(() => {
         if(local?.token) {
-            getTrips();
+            getTrips(page);
         }
         
     }, [local]);
@@ -46,6 +61,14 @@ const History = () => {
         return(
             <Log />
         )
+    }
+
+    if( repeatTrack ) {
+        return <TripTrack repeatTrip={true} />
+    }
+
+    if( details ) {
+        return <HistoryTripDetails details={details} setDetails={setDetails} />
     }
 
     return (
@@ -57,8 +80,10 @@ const History = () => {
 
             <div className="history__content">
                 {message && <Message message={message}/>}
-                {!trips && <HistoryEmpty />}
-                {trips && <ListTrips data={trips} />}
+                {trips.length < 1 && <HistoryEmpty />}
+                {trips.length > 0 && <ListTrips trips={trips} setDetails={setDetails} />}
+                {trips.length > 0 && loadMore && <div className="history__more"><button className="button" onClick={onClickLoadMore} >load more</button></div>}
+                
             </div>
 
         </div>

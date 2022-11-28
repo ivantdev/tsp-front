@@ -11,6 +11,7 @@ const GlobalContextProvider = ( {children}) => {
     const [ google, setGoogle ] = useState(null);
     const [ geocoder, setGeocoder ] = useState(null);
     const [ track, setTrack ] = useState(null);
+    const [ repeatTrack, setRepeatTrack ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     
     const { local, saveItem } = useLocalStorage("TSP_PROJECT", {});
@@ -117,6 +118,8 @@ const GlobalContextProvider = ( {children}) => {
                 setGeocoder,
                 track,
                 setTrack,
+                repeatTrack,
+                setRepeatTrack,
             }
         }>
             {children}
