@@ -70,7 +70,7 @@ const NewTrip = () => {
     }, []);
 
     if( track ) {
-        return <TripTrack track={true} />
+        return <TripTrack newTrip={true} />
     }
     return (
         <div className="trip__details">

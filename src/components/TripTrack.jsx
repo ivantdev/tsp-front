@@ -8,7 +8,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 const TripTrack = ( { newTrip=false, repeatTrip=false } ) => {
     const { track, setTrack, repeatTrack, setRepeatTrack, google, setGoogle, setGeocoder } = useContext(GlobalContext);
     let currentTrack;
-    if(newTrip && !repeatTrip) {
+    if(newTrip) {
         currentTrack = track;
     } else {
         currentTrack = repeatTrack;
