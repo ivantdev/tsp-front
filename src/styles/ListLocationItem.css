@@ -1,6 +1,7 @@
 button.delete {
     background-color: transparent;
     border: none;
+    width: unset;
 }
 
 .details__locations {

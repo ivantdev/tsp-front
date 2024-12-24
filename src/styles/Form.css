@@ -1,5 +1,7 @@
 .signup, .login {
     padding-bottom: 120px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .login-form, .signup-form {

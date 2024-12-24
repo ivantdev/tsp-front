@@ -114,6 +114,10 @@
     font-weight: 300;
 }
 
+.map__location-details p {
+    padding: unset
+}
+
 .map__address-complement {
     height: 20px;
     display: grid;
