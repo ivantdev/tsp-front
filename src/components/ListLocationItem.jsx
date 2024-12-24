@@ -24,11 +24,11 @@ const ListLocationItem = ({ location }) => {
                 <span className="location__name">{location.address}</span>
                 <span className="location__description">{location.address_complement}</span>
             </div>
-            <div className="delete" onClick={() => {
+            <button className="delete" onClick={() => {
                     onClickDelete(location.id);
                 }}>
                 <i className="fa-light fa-trash-can"></i>
-            </div>
+            </button>
         </div>
     );
 };

@@ -70,7 +70,7 @@ body.nopadding {
 
 .gm-style-cc { display:none; }
 
-.button {
+button, .button {
     width: 120px;
     height: 38px;
     font-family: "Libre Franklin";
@@ -80,6 +80,7 @@ body.nopadding {
     border-radius: 20px;
     background-color: var(--light-green);
     color: #000000;
+    cursor: pointer;
 }
 
 .loading {

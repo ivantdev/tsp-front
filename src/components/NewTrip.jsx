@@ -22,6 +22,7 @@ const NewTrip = () => {
         const data = {
             ...tripPlanning
         };
+        data.locations = data.locations.map((item, index) => ({...item, id: index}));
 
         const { status, response } = await post(endpoint+url_paths.shortestpath, data, config);
 
@@ -97,7 +98,7 @@ const NewTrip = () => {
                     <div className="checkbox">
                         <input type="checkbox" name="back_to_start" id="back_to_start" checked={tripPlanning?.back_to_start ? tripPlanning.back_to_start : false} onChange={onChangeStartPoint}/>
                         <div className="icon">
-                            <i className="fa-solid fa-check"></i>
+                            <label htmlFor="back_to_start"><i className="fa-solid fa-check"></i></label>
                         </div>
                     </div>
                     <label htmlFor="back_to_start">back to starting point</label>

@@ -1,3 +1,8 @@
+button.delete {
+    background-color: transparent;
+    border: none;
+}
+
 .details__locations {
     padding: 10px 0;
 }

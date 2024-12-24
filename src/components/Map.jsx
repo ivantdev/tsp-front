@@ -18,9 +18,9 @@ const Map = ({ queryLocation, center, container, zoom, pathCoordinates, markers 
     
     const options = {
         center: center || {lat: 4.63777, lng: -74.084},
-        zoom: zoom | 15,
+        zoom: zoom || 15,
         disableDefaultUI: true,
-        mapId: ["35ed74a250b8d9e0"],
+        mapId: "78602820fe28c210",
         keyboardShortcuts: false,
         gestureHandling: "greedy",
     };
