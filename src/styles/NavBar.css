@@ -6,8 +6,8 @@ Styles for NavBar
 
 .nav-container {
     opacity: 0;
-    position: fixed;
     z-index: 2;
+    position: fixed;
     bottom: 1rem;
     left: 0;
     width: 100%;
@@ -21,8 +21,9 @@ Styles for NavBar
 }
 
 .navbar {
+    position: relative;
     width: 95%;
-    max-width: 440px;
+    max-width: 340px;
     height: 100%;
     background-color: var(--nav-black);
     border-radius: 30px;
@@ -52,6 +53,11 @@ Styles for NavBar
     font-size: 3rem;
 }
 
+.nav-item span {
+    display: none;
+    text-decoration: unset;
+}
+
 .nav-item a.active {
     color: var(--nav-button-active);
 }
@@ -62,6 +68,22 @@ Styles for NavBar
 
 .nav-item.animation a {
     color: var(--nav-button-active);
+}
+
+.navbar__expand-button {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    height: 1px;
+}
+
+.navbar__expand-button button {
+    width: 30px;
+    height: 30px;
+    margin-left: 1rem;
+    position: absolute;
+    top: -2rem;
+    color: black;
 }
 
 @keyframes shake {
@@ -80,5 +102,59 @@ Styles for NavBar
     }
     100% {
         transform: rotate(0deg);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar__expand-button {
+        display: flex;
+    }
+
+    .expanded.nav-container {
+        margin: 1rem 0 0 1rem;
+        width: 100%;
+        height: max-content;
+        min-width: 30px;
+    }
+    
+    .expanded .navbar ul{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    
+    .expanded .nav-item {
+        width: 100%;
+    }
+
+    .expanded .nav-item a, .expanded .nav-item.plus a {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .expanded .nav-item span {
+        display: block;
+    }
+
+    .expanded .nav-item.plus a {
+        background-color: unset;
+        position: relative;
+    }
+
+    .expanded .nav-item.plus a::before {
+        content: '';
+        position: absolute;
+        top: 0.5rem;
+        left: -1.50rem;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: var(--soft-purple-alpha);
+    }
+    .expanded .navbar__expand-button button {
+        transform: rotate(180deg);
     }
 }
