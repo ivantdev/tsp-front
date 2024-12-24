@@ -21,6 +21,7 @@ const App = () => {
     return (
         <div className="app">
             { loading && <Loading /> }
+            <NavBar />
             <Routes>
                 <Route path={ HomeRoute } element={<Home />} />
                 <Route path={ MapRoute } element={<MapView />} />
@@ -28,7 +29,6 @@ const App = () => {
                 <Route path={ HistoryRoute } element={<History />} />
                 <Route path={ AccountRoute } element={<Account />} />
             </Routes>
-            <NavBar />
         </div>
     );
 }

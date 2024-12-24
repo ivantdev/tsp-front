@@ -64,7 +64,7 @@ body.nopadding {
 .app {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    min-height: 100vh;
     margin: 0 auto;
 }
 
@@ -106,4 +106,13 @@ button, .button {
 .loading .icon {
     font-size: 6rem;
     color: var(--loading);
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+p {
+    padding: 2rem 0;
+    font-size: 1.6rem;
 }
