@@ -1,5 +1,7 @@
 .account__container {
     padding-bottom: 120px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .account__picture {

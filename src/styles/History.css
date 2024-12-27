@@ -1,6 +1,8 @@
 .history {
     position: relative;
     padding-bottom: 120px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .sort-icon {
@@ -103,6 +105,8 @@
 .history__details {
     position: relative;
     padding-bottom: 120px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .details__close button {

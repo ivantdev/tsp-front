@@ -22,7 +22,7 @@ const NewTrip = () => {
         const data = {
             ...tripPlanning
         };
-        data.locations = data.locations.map((item, index) => ({...item, id: index}));
+        data.locations = data.locations.map((item, index) => ({...item, id: index+1}));
 
         const { status, response } = await post(endpoint+url_paths.shortestpath, data, config);
 
